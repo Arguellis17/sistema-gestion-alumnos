@@ -80,5 +80,16 @@ public class AlumnoController {
         return null;
     }
 
+    // Eliminar un alumno
+    @DeleteMapping("/{id}")
+    public Alumno deleteAlumno(@PathVariable int id) {
+        for (Alumno alumno : alumnos) {
+            if (alumno.getId() == id) {
+                alumnos.remove(alumno);
+                return alumno;
+            }
+        }
+        return null;
+    }
 
 }
