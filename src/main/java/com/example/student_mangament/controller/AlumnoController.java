@@ -1,6 +1,6 @@
-package Controller;
+package com.example.student_mangament.controller;
 
-import Model.Alumno;
+import com.example.student_mangament.model.Alumno;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/alumnos")
 public class AlumnoController {
 
     private List<Alumno> alumnos = new ArrayList<>(Arrays.asList(
@@ -19,9 +20,28 @@ public class AlumnoController {
             new Alumno(5, "Greg Pacheco", "gregp055@gmail.com", 23, "Ingenieria")
     ));
 
-    // Se agrega la anotacion @GetMapping para indicar que este metodo se ejecutara cuando se reciba una peticion GET
-    @GetMapping("/alumnos")
+    // Consultar todos los alumnos
+    @GetMapping
     public List<Alumno> getAlumnos() {
         return alumnos;
     }
+
+    // Consultar un alumno por email
+    @GetMapping("/{email}")
+    public Alumno getAlumnoByEmail(@PathVariable String email) {
+        for (Alumno alumno : alumnos) {
+            if (alumno.getEmail().equalsIgnoreCase(email)) {
+                return alumno;
+            }
+        }
+        return null;
+    }
+
+    // Crear un nuevo alumno
+    @PostMapping
+    public Alumno postAlumno(@RequestBody Alumno alumno) {
+        alumnos.add(alumno);
+        return alumno;
+    }
+
 }
