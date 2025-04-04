@@ -44,4 +44,19 @@ public class AlumnoController {
         return alumno;
     }
 
+    // Actualizar un alumno existente
+    @PutMapping
+    public Alumno putAlumno(@RequestBody Alumno alumno) {
+        for(Alumno a: alumnos){
+            if(a.getId() == alumno.getId()){
+                a.setNombre(alumno.getNombre());
+                a.setEmail(alumno.getEmail());
+                a.setEdad(alumno.getEdad());
+                a.setCurso(alumno.getCurso());
+                return a;
+            }
+        }
+        return null;
+    }
+
 }
