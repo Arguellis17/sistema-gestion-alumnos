@@ -43,7 +43,6 @@ public class AlumnoController {
         alumnos.add(alumno);
         return alumno;
     }
-
     // Actualizar un alumno existente
     @PutMapping
     public Alumno putAlumno(@RequestBody Alumno alumno) {
@@ -58,5 +57,28 @@ public class AlumnoController {
         }
         return null;
     }
+    // Actualizar de manera parcial la información
+    @PatchMapping
+    public Alumno patchAlumno(@RequestBody Alumno alumno) {
+        for(Alumno a: alumnos){
+            if(a.getId() == alumno.getId()){
+                if(alumno.getNombre() != null){
+                    a.setNombre(alumno.getNombre());
+                }
+                if(alumno.getEmail() != null){
+                    a.setEmail(alumno.getEmail());
+                }
+                if(alumno.getEdad() != 0){
+                    a.setEdad(alumno.getEdad());
+                }
+                if(alumno.getCurso() != null){
+                    a.setCurso(alumno.getCurso());
+                }
+                return a;
+            }
+        }
+        return null;
+    }
+
 
 }
