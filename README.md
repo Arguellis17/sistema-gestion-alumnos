@@ -11,3 +11,8 @@ Desarrollar una aplicación utilizando Spring Boot que **permita gestionar una l
 2. La aplicacion debe ser una aplicación web que utilice Spring Boot
 3. Se debe crear un nuevo proyecto desde Spring Initializr
 4. Los recursos de esta aplicación deberán estar contenidos en una lista de Java, e inicialmente, debe contener un máximo de 4 alumnos **con los atributos ID, nombre, email, edad** y **curso**.
+5. Las rutas de todos los endpoints deben estar unificadas
+
+## Clona este repositorio 🚀
+```sh
+git clone https://github.com/Arguellis17/sistema-gestion-alumnos.git
